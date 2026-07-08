@@ -169,10 +169,11 @@ html,body{ margin:0; height:100%; background:var(--bg); color:var(--text); font-
 .badge{ display:block; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:16px; text-decoration:none; transition:border-color .2s, transform .15s; }
 .badge:hover{ border-color:var(--cyan); transform:translateY(-2px); }
 .badge .rarity{ font-family:var(--mono); font-size:10px; letter-spacing:1px; margin-bottom:8px; }
-.badge .rarity.legendary{ color:var(--mag); text-shadow:0 0 6px rgba(255,35,64,0.5); }
-.badge .rarity.rare{ color:var(--cyan); text-shadow:0 0 6px rgba(0,240,255,0.5); }
+.badge .rarity.common{ color:#9aa5b8; text-shadow:0 0 5px rgba(154,165,184,0.35); }
 .badge .rarity.uncommon{ color:var(--uncommon); text-shadow:0 0 6px rgba(110,231,160,0.5); }
-.badge .rarity.common{ color:var(--text-dim); }
+.badge .rarity.rare{ color:var(--cyan); text-shadow:0 0 6px rgba(0,240,255,0.5); }
+.badge .rarity.epic{ color:#b478ff; text-shadow:0 0 6px rgba(180,120,255,0.55); }
+.badge .rarity.legendary{ color:#ff9f1c; text-shadow:0 0 6px rgba(255,159,28,0.55); }
 .badge h3{ margin:0 0 6px; font-size:15px; font-family:var(--sans); font-weight:600; color:var(--text); }
 .badge .issuer{ font-family:var(--mono); font-size:11px; color:var(--cyan); }
 .badge .date{ font-family:var(--mono); font-size:10.5px; color:var(--text-dim); margin-top:6px; }
@@ -183,12 +184,17 @@ html,body{ margin:0; height:100%; background:var(--bg); color:var(--text); font-
 .quest{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:20px; margin-bottom:14px; }
 .quest .qhead{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
 .quest h3{ margin:0; font-family:var(--sans); font-weight:700; font-size:17px; color:var(--text); }
-.quest .stars{ font-family:var(--mono); font-size:12px; color:var(--yellow); }
+.quest-tier{ font-family:var(--mono); font-size:10.5px; letter-spacing:1px; white-space:nowrap; }
+.quest-tier.common{ color:#9aa5b8; text-shadow:0 0 5px rgba(154,165,184,0.35); }
+.quest-tier.uncommon{ color:var(--uncommon); text-shadow:0 0 6px rgba(110,231,160,0.5); }
+.quest-tier.rare{ color:var(--cyan); text-shadow:0 0 6px rgba(0,240,255,0.5); }
+.quest-tier.epic{ color:#b478ff; text-shadow:0 0 6px rgba(180,120,255,0.55); }
+.quest-tier.legendary{ color:#ff9f1c; text-shadow:0 0 6px rgba(255,159,28,0.55); }
 .quest p{ font-family:var(--sans); font-size:14.5px; color:var(--text-dim); margin:10px 0; }
 .quest .reward{ font-family:var(--mono); font-size:11px; color:var(--cyan); }
 .quest .stamp{ display:inline-block; margin-top:10px; font-family:var(--disp); font-size:10px; color:var(--mag); border:1px solid var(--mag); padding:5px 9px; transform:rotate(-4deg); border-radius:4px; text-shadow:0 0 6px rgba(255,35,64,0.5); }
 .quest .stamp.inprogress{ color:var(--yellow); border-color:var(--yellow); }
-.quest a.repo-link{ font-family:var(--mono); font-size:11px; color:var(--cyan); text-decoration:none; }
+.quest a.repo-link{ font-family:var(--mono); font-size:11px; color:var(--cyan); text-decoration:none; display:block; margin-top:6px; }
 .quest a.repo-link:hover{ text-decoration:underline; }
 
 /* guild */
@@ -274,6 +280,22 @@ p.lede{ color:var(--text-dim); font-size:16px; line-height:1.7; max-width:58ch; 
 @media (max-width:640px){
   .stat-row{ grid-template-columns:100px 1fr 32px; }
   .pip-label, .pip-val{ width:56px; }
+}
+@media (min-width:900px){
+  .badge-grid{ grid-template-columns:1fr; }
+  .inv-grid{ grid-template-columns:1fr; }
+}
+@media (min-width:1024px){
+  .stage-inner{ max-width:940px; }
+  .title{ font-size:clamp(28px,3.4vw,42px); }
+  .avatar-frame{ width:210px; height:270px; }
+  .lede{ font-size:18px; max-width:64ch; }
+  .panel{ padding:28px; }
+  .panel-label{ font-size:12px; }
+  .quest p{ font-size:15.5px; }
+  .badge h3{ font-size:16.5px; }
+  .guild-name{ font-size:19px; }
+  .guild-desc{ font-size:14.5px; }
 }
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; animation:none !important; }
@@ -397,21 +419,22 @@ p.lede{ color:var(--text-dim); font-size:16px; line-height:1.7; max-width:58ch; 
     <div class="eyebrow">// TROPHY_CASE.dat</div>
     <h2 class="title">ACHIEVEMENTS</h2>
     <div class="badge-grid">
-      <a class="badge" href="https://www.credly.com/users/abu-huraira.47e26801/badges" target="_blank" rel="noopener"><div class="rarity legendary">★ LEGENDARY</div><h3>ISO/IEC 42001:2023 Lead Auditor</h3><div class="issuer">Mastermind</div><div class="date">Jan 2026</div><div class="verify">view on Credly →</div></a>
-      <a class="badge" href="https://www.credly.com/users/abu-huraira.47e26801/badges" target="_blank" rel="noopener"><div class="rarity legendary">★ LEGENDARY</div><h3>ISO/IEC 27701:2025 Lead Auditor</h3><div class="issuer">Mastermind</div><div class="date">Jun 2026</div><div class="verify">view on Credly →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Fortinet%20Certified%20Fundamentals%20in%20Cybersecurity/readme.md" target="_blank" rel="noopener"><div class="rarity rare">◆ RARE</div><h3>Fortinet Certified Cybersecurity Fundamentals</h3><div class="issuer">Fortinet</div><div class="date">Jan 2026</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Crafting%20Precision%20Prompts%20with%20Generative%20AI%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity uncommon">◆ UNCOMMON</div><h3>Craft Precise Prompts for AI Models</h3><div class="issuer">IBM</div><div class="date">Feb 2026</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Everyday%20Ethics%20for%20Artificial%20Intelligence%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity uncommon">◆ UNCOMMON</div><h3>Everyday Ethics for Artificial Intelligence</h3><div class="issuer">IBM</div><div class="date">2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Enterprise%20Design%20Thinking%20Practitioner%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Enterprise Design Thinking Practitioner</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Introduction%20to%20Generative%20AI%20by%20Google%20and%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Introduction to Generative AI</h3><div class="issuer">IBM &amp; Google</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Agile%20Explorer%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Agile Explorer</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/AI%20Literacy%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>AI Literacy</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Mastering%20the%20Art%20of%20Prompting%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Mastering the Art of Prompting</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Explore%20Emerging%20Tech%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Explore Emerging Tech</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Introduction%20to%202D%20Animation%20by%20Grameenphone%20Academy/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>Introduction to 2D Animation</h3><div class="issuer">Grameenphone Academy</div><div class="date">Nov 2025</div><div class="verify">view certificate →</div></a>
-      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/CoderHunt%203.0%20Bootcamp%20by%20Shohoj%20Coding/README.md" target="_blank" rel="noopener"><div class="rarity common">● COMMON</div><h3>CoderHunt 3.0 Bootcamp</h3><div class="issuer">Shohoj Coding</div><div class="date">Jul 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://www.credly.com/users/abu-huraira.47e26801/badges" target="_blank" rel="noopener"><div class="rarity epic">★ TIER 4 // EPIC</div><h3>ISO/IEC 27701:2025 Lead Auditor</h3><div class="issuer">Mastermind</div><div class="date">Jun 2026</div><div class="verify">view on Credly →</div></a>
+      <a class="badge" href="https://www.credly.com/users/abu-huraira.47e26801/badges" target="_blank" rel="noopener"><div class="rarity epic">★ TIER 4 // EPIC</div><h3>ISO/IEC 42001:2023 Lead Auditor</h3><div class="issuer">Mastermind</div><div class="date">Jan 2026</div><div class="verify">view on Credly →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Fortinet%20Certified%20Fundamentals%20in%20Cybersecurity/readme.md" target="_blank" rel="noopener"><div class="rarity rare">▲ TIER 3 // RARE</div><h3>Fortinet Certified Cybersecurity Fundamentals</h3><div class="issuer">Fortinet</div><div class="date">Jan 2026</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Crafting%20Precision%20Prompts%20with%20Generative%20AI%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity uncommon">◆ TIER 2 // UNCOMMON</div><h3>Craft Precise Prompts for AI Models</h3><div class="issuer">IBM</div><div class="date">Feb 2026</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Everyday%20Ethics%20for%20Artificial%20Intelligence%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity uncommon">◆ TIER 2 // UNCOMMON</div><h3>Everyday Ethics for Artificial Intelligence</h3><div class="issuer">IBM</div><div class="date">2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://verify.skilljar.com/c/k7faanwagehd" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Claude 101</h3><div class="issuer">Anthropic</div><div class="date">2026</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Introduction%20to%202D%20Animation%20by%20Grameenphone%20Academy/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Introduction to 2D Animation</h3><div class="issuer">Grameenphone Academy</div><div class="date">Nov 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Agile%20Explorer%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Agile Explorer</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Introduction%20to%20Generative%20AI%20by%20Google%20and%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Introduction to Generative AI</h3><div class="issuer">IBM &amp; Google</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Enterprise%20Design%20Thinking%20Practitioner%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Enterprise Design Thinking Practitioner</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/AI%20Literacy%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>AI Literacy</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Explore%20Emerging%20Tech%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Explore Emerging Tech</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/Mastering%20the%20Art%20of%20Prompting%20by%20IBM/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>Mastering the Art of Prompting</h3><div class="issuer">IBM</div><div class="date">Sep 2025</div><div class="verify">view certificate →</div></a>
+      <a class="badge" href="https://github.com/Hurairiam/certifications/blob/main/CoderHunt%203.0%20Bootcamp%20by%20Shohoj%20Coding/README.md" target="_blank" rel="noopener"><div class="rarity common">● TIER 1 // COMMON</div><h3>CoderHunt 3.0 Bootcamp</h3><div class="issuer">Shohoj Coding</div><div class="date">Jul 2025</div><div class="verify">view certificate →</div></a>
     </div>
-    <p class="note" style="text-align:center;">every badge links to its verified certificate on GitHub or Credly</p>
+    <p class="note" style="text-align:center;">none legendary — yet</p>
   </div></div></section>
 
   <section class="stage" id="s4"><div class="stage-pad"><div class="stage-inner">
@@ -419,7 +442,7 @@ p.lede{ color:var(--text-dim); font-size:16px; line-height:1.7; max-width:58ch; 
     <h2 class="title">QUESTS</h2>
 
     <div class="quest">
-      <div class="qhead"><h3>SYNC4U</h3><span class="stars">★★★☆☆</span></div>
+      <div class="qhead"><h3>SYNC4U</h3><span class="quest-tier common">TIER 1 // COMMON</span></div>
       <p>My first AI project — a smart campus app prototype built during the ULAB CSE Fest
         2025 Hackathon (Top 9 finish), solving campus connectivity problems using AI tools
         like Lovable.ai and ChatGPT.</p>
@@ -429,7 +452,7 @@ p.lede{ color:var(--text-dim); font-size:16px; line-height:1.7; max-width:58ch; 
     </div>
 
     <div class="quest">
-      <div class="qhead"><h3>PROJECT GUTENBERG</h3><span class="stars">★★☆☆☆</span></div>
+      <div class="qhead"><h3>PROJECT GUTENBERG</h3><span class="quest-tier uncommon">TIER 2 // UNCOMMON</span></div>
       <p>A Java library management system prototype for my OOP lab coursework, named after
         and modeled on the real-world Project Gutenberg library system — HashMap-indexed
         catalog and members, with checkouts and returns persisted to disk between sessions.</p>
@@ -438,13 +461,16 @@ p.lede{ color:var(--text-dim); font-size:16px; line-height:1.7; max-width:58ch; 
     </div>
 
     <div class="quest">
-      <div class="qhead"><h3>COMPILE &amp; CONQUER</h3><span class="stars">★★★★☆</span></div>
-      <p>In development — a 2D RPG about CSE student life, built in Python with Pygame.
-        Currently at the UML and system-design stage before a single line of gameplay
-        code gets written.</p>
-      <div class="reward">reward: UML · game architecture · Python · Pygame</div>
+      <div class="qhead"><h3>CSE LIFE: COMPILE &amp; CONQUER</h3><span class="quest-tier epic">TIER 4 // EPIC</span></div>
+      <p>A text-based RPG simulating a CSE student's academic and financial journey, built
+        in Python on a strict OOP framework. Short-Scope MVP is structurally
+        verified — full UML, use-case, and sequence diagrams done for both the current
+        build and the larger endgame.</p>
+      <div class="reward">reward: UML · abstract classes &amp; polymorphism · system architecture · Python</div>
+      <a class="repo-link" href="https://github.com/Hurairiam/cse-life-compile-and-conquer" target="_blank" rel="noopener">view repo →</a>
       <div class="stamp inprogress">IN PROGRESS</div>
     </div>
+
   </div></div></section>
 
   <section class="stage" id="s5"><div class="stage-pad"><div class="stage-inner">
